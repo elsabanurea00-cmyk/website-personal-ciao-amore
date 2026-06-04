@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAS Perancangan Website - Ciao Amore💃</title>
+    <style>
+        /* --- RESET & PALET WARNA (100% SESUAI KODE LUNÉA FASHION) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg-body: #fffafc;
+            --text-main: #555555;
+            --text-title: #8b5e83;
+            --text-muted: #6d6875;
+            --text-accent: #b5838d;
+            --nav-footer-bg: #f8d7da;
+            --box-bg-pink: #ffe5ec;
+            --section-bg-soft: #fff0f3;
+            --btn-bg: #cdb4db;
+            --btn-hover: #b5838d;
+            --gradient-lunea: linear-gradient(to right, #fde2e4, #fad2e1);
+            --gradient-cta: linear-gradient(to right, #fad2e1, #cdb4db);
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR PASTEL ELEGAN --- */
+        nav {
+            background-color: var(--nav-footer-bg);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav h1 {
+            color: var(--text-title);
+            font-size: 30px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--text-title);
+        }
+
+        /* --- HERO SECTION (GRADASI SOFT GLAMOUR) --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 140px 10% 80px 10%;
+            background: var(--gradient-lunea);
+        }
+
+        .hero-text {
+            width: 50%;
+        }
+
+        .hero-text h2 {
+            font-size: 45px;
+            color: var(--text-title);
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: var(--text-main);
+        }
+
+        /* Tombol Lonjong Khas LUNEA */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--btn-bg);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--btn-hover);
+        }
+
+        .hero-img-container {
+            width: 400px;
+            height: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .hero-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- SEKSI UMUM --- */
+        section {
+            padding: 80px 10% 40px 10%;
+            text-align: center;
+        }
+
+        section h2 {
+            color: var(--text-title);
+            margin-bottom: 15px;
+            font-size: 35px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .bg-alternatif {
+            background-color: var(--section-bg-soft);
+        }
+
+        /* --- STRUKTUR FORMAT GRID 2 DI ATAS & 2 DI BAWAH --- */
+        .box-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Memaksa susunan menjadi 2 kolom */
+            gap: 30px;
+            max-width: 650px; /* Membatasi lebar box agar kartu terbungkus rapi secara simetris */
+            margin: 0 auto;
+        }
+
+        @media (max-width: 600px) {
+            .box-container {
+                grid-template-columns: 1fr; /* Responsif menjadi 1 kolom jika dibuka di HP layar kecil */
+            }
+        }
+
+        .card-anggota {
+            background-color: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .card-anggota:hover {
+            transform: translateY(-5px);
+        }
+
+        .avatar-container {
+            width: 100%;
+            height: 260px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            background-color: var(--box-bg-pink);
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-anggota h3 {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .card-anggota .nim {
+            color: var(--text-accent);
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .hint-click {
+            font-size: 12px;
+            color: var(--text-title);
+            font-weight: bold;
+        }
+
+        /* --- INTERACTIVE MODAL DETIL PROFIL (TEMA PASTEL) --- */
+        .modal-profile {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(139, 94, 131, 0.4); 
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-profile.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 20px;
+            max-width: 750px;
+            width: 100%;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            text-align: left;
+        }
+
+        @media (max-width: 650px) {
+            .modal-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .modal-left img {
+            width: 220px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .modal-right {
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        .modal-right h2 {
+            color: var(--text-title);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .modal-right .modal-nim {
+            color: var(--text-accent);
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .profile-details-list {
+            list-style: none;
+        }
+
+        .profile-details-list li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            border-bottom: 1px solid var(--section-bg-soft);
+            padding-bottom: 5px;
+        }
+
+        .profile-details-list li strong {
+            color: var(--text-muted);
+            display: inline-block;
+            width: 130px;
+        }
+
+        .btn-external-web {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: var(--btn-bg);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-external-web:hover {
+            background-color: var(--btn-hover);
+        }
+
+        /* --- KONSEP KOTAK TESTIMONI STYLE --- */
+        .konsep-box {
+            background-color: var(--box-bg-pink);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 800px;
+            margin: auto;
+            text-align: left;
+        }
+
+        .konsep-box h3 {
+            color: var(--text-title);
+            margin-bottom: 15px;
+        }
+
+        /* --- SEKSI INTEGRASI PROJECT (UAS A & B) --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .project-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .project-card h3 {
+            color: var(--text-title);
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        /* --- KOTAK INFO KONTAK GRUP --- */
+        .contact-box {
+            background-color: var(--box-bg-pink);
+            padding: 25px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-box p {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin: 10px 0;
+        }
+
+        .contact-box p strong {
+            color: var(--text-title);
+        }
+
+        /* --- FOOTER LUNÉA --- */
+        footer {
+            background-color: var(--nav-footer-bg);
+            text-align: center;
+            padding: 25px;
+            color: var(--text-muted);
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h1>Ciao Amore💃</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#konsep">Concept</a></li>
+            <li><a href="#project">Project</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h2>The Art of Personal Branding</h2>
+            <p>
+                Selamat datang di platform Website Personal Kelompok Ciao Amore. Kami mengintegrasikan tugas perancangan website berbasis keindahan estetika pastel yang terinspirasi dari LUNÉA.
+            </p>
+            <a href="#about" class="btn">Lihat Anggota Tim</a>
+        </div>
+        <div class="hero-img-container">
+            <img src="foto-bersama.jpg" alt="Foto Bersama Kelompok">
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>Kenali Tim Kami</h2>
+        <p class="section-subtitle">Klik kartu nama di bawah untuk memunculkan biodata lengkap interaktif</p>
+        
+        <div class="box-container">
+            <div class="card-anggota" onclick="openProfile('fadhillah')">
+                <div class="avatar-container">
+                    <img src="Notepad++/fadhillah.jpeg" alt="Nur Fadhillah">
+                </div>
+                <h3>Nur Fadhillah</h3>
+                <p class="nim">NIM. 2405171104</p>
+                <p class="hint-click">Detail Profil &rarr;</p>
+            </div>
+
+            <div class="card-anggota" onclick="openProfile('liana')">
+                <div class="avatar-container">
+                    <img src="liana.jpg" alt="Liana Rahmadani">
+                </div>
+                <h3>Liana Rahmadani</h3>
+                <p class="nim">NIM. 2405171016</p>
+                <p class="hint-click">Detail Profil &rarr;</p>
+            </div>
+
+            <div class="card-anggota" onclick="openProfile('saraswathi')">
+                <div class="avatar-container">
+                    <img src="saraswathi.jpg" alt="Saras Wathi">
+                </div>
+                <h3>Saras Wathi</h3>
+                <p class="nim">NIM. 2405171012</p>
+                <p class="hint-click">Detail Profil &rarr;</p>
+            </div>
+
+            <div class="card-anggota" onclick="openProfile('elsa')">
+                <div class="avatar-container">
+                    <img src="elsa.jpg" alt="Elsa Juita Banurea">
+                </div>
+                <h3>Elsa Juita Banurea</h3>
+                <p class="nim">NIM. 2405171100</p>
+                <p class="hint-click">Detail Profil &rarr;</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="profileModal" class="modal-profile" onclick="closeProfile(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="document.getElementById('profileModal').classList.remove('active')">&times;</span>
+            <div class="modal-left">
+                <img id="modalImg" src="" alt="Foto">
+            </div>
+            <div class="modal-right">
+                <h2 id="modalName">Nama</h2>
+                <div id="modalNim" class="modal-nim">NIM. 0000000</div>
+                <ul class="profile-details-list" id="modalDetails">
+                    </ul>
+                <a id="modalExternalLink" href="#" target="_blank" class="btn-external-web">Kunjungi Website</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="konsep" class="bg-alternatif">
+        <h2>Konsep Tampilan</h2>
+        <p class="section-subtitle">Kombinasi skema identitas palet warna pastel pilihan kelompok kami</p>
+        
+        <div class="konsep-box">
+            <h3>Tema: Soft Glamour Pastel Harmony</h3>
+            <p>
+                Sesuai dengan rancangan utama pada platform katalog fashion <strong>LUNÉA</strong>, website personal ini sepenuhnya mengimplementasikan warna pastel lembut yang didominasi oleh merah muda pudar, ungu mauve, dan putih mutiara. Menghadirkan kesan visual yang tenang, ramah di mata, namun tetap memancarkan pesona modern mahasiswa manajemen bisnis.
+            </p>
+        </div>
+    </section>
+
+    <section id="project">
+        <h2>Koleksi Project Kami</h2>
+        <p class="section-subtitle">Akses ekosistem link tugas rancangan web kelompok yang telah dibuat</p>
+        
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Project UAS A<br>Landing Page</h3>
+                <p>Halaman statis kreatif utama yang dibangun khusus untuk mengenalkan esensi profile dasar dan penawaran awal Kelompok Ciao Amore.</p>
+                <a href="https://nuurrfdhlaa.github.io/website-Ciao-Amore/" target="_blank" class="btn">Buka Web</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Project UAS B<br>LUNÉA E-Commerce</h3>
+                <p>Aplikasi toko digital mandiri lengkap dengan display katalog premium fashion wanita bernuansa soft glamour khas pastel.</p>
+                <a href="https://nuurrfdhlaa.github.io/LUNEA-Fashion-E-Commerce/" target="_blank" class="btn">Buka Web</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="bg-alternatif">
+        <h2>Contact Us</h2>
+        <p class="section-subtitle">Contact us if you have any questions.</p>
+        
+        <div class="contact-box">
+            <p><strong>Instagram:</strong> <a href="https://www.instagram.com/ciaoamoree_/" target="_blank" style="color: var(--text-accent); font-weight: bold; text-decoration: none;">@ciaoamoree_</a></p>
+            <p><strong>Email:</strong> <a href="mailto:ciaoamore.id@gmail.com" style="color: var(--text-accent); font-weight: bold; text-decoration: none;">ciaoamore.id@gmail.com</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Kelompok Ciao Amore | Diadaptasi Berdasarkan Tema LUNÉA Fashion</p>
+    </footer>
+
+    <script>
+        const databaseAnggota = {
+            fadhillah: {
+                nama: "Nur Fadhillah",
+                nim: "NIM. 2405171104",
+                foto: "fadhillah.jpeg",
+                linkWebsite: "https://www.linkedin.com/in/nur-fadhillah-1a5829363?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+                details: [
+                    ["Instagram", "@nuurfdhlaa"],
+                    ["Kampus/Prodi", "D4 Manajemen Bisnis Polmed"],
+                    ["Minat Bidang", "Digital Marketing & Entrepreneurship"],
+                    ["Tanggal Lahir", "08 Desember 2006"],
+					["Zodiak", "Sagitarius"],
+                    ["Hobi", "Memasak, Menulis"],
+                    ["Favorit", "Matcha & Makanan Pedas"],
+                    ["Personality", "Ambitious, Empathetic, Organized"]
+                ]
+            },
+            liana: {
+                nama: "Liana Rahmadani",
+                nim: "NIM. 2405171016",
+                foto: "liana.jpeg",
+                linkWebsite: "https://www.linkedin.com/in/liana-rahmadani-7236a0386?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+                details: [
+                    ["Instagram", "@lia.narhmdny"],
+                    ["Kampus/Prodi", "D4 Manajemen Bisnis Polmed"],
+                    ["Minat Bidang", "Entrepreneurship & Fashion"],
+                    ["Tanggal Lahir", "26 Oktober 2005"],
+					["Zodiak", "Scorpio"],
+                    ["Hobi", "Make up, Dance, Renang"],
+                    ["Favorit", "Salad Buah & Makanan Manis"],
+                    ["Personality", "Misterius, Elegant, Ambitious"]
+                ]
+            },
+            saraswathi: {
+                nama: "Saras Wathi",
+                nim: "NIM. 2405171012",
+                foto: "saraswathi.jpeg",
+                linkWebsite: "https://www.linkedin.com/in/saras-wathi-9a7bb2288?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+                details: [
+                    ["Instagram", "@sarssswathii"],
+                    ["Kampus/Prodi", "D4 Manajemen Bisnis Polmed"],
+                    ["Minat Bidang", "Digital Marketing & Fashion"],
+                    ["Tanggal Lahir", "12 Oktober 2005"],
+					["Zodiak", "Libra"],
+                    ["Hobi", "Menari, Menulis, Menggambar"],
+                    ["Favorit", "Matcha, Cokelat, Pedas"],
+                    ["Personality", "Ekspresif, Ramah, Kreatif"]
+                ]
+            },
+            elsa: {
+                nama: "Elsa Juita Banurea",
+                nim: "NIM. 2405171100",
+                foto: "elsa.jpeg",
+                linkWebsite: "https://www.linkedin.com/in/elsa-juita-banurea-601b62391?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+                details: [
+                    ["Instagram", "@elcak_"],
+                    ["Kampus/Prodi", "D4 Manajemen Bisnis Polmed"],
+                    ["Minat Bidang", "Manajemen Bisnis & Peluang Usaha"],
+					["Tanggal Lahir", "28 November 2006"],
+                    ["Zodiak", "Sagitarius"],
+                    ["Hobi", "Makan"],
+                    ["Favorit", "Bakso & Segala Kuliner Pedas"],
+                    ["Personality", "Disiplin, Semangat Belajar Tinggi"]
+                ]
+            }
+        };
+
+        function openProfile(key) {
+            const data = databaseAnggota[key];
+            if(!data) return;
+
+            document.getElementById('modalName').innerText = data.nama;
+            document.getElementById('modalNim').innerText = data.nim;
+            document.getElementById('modalImg').src = data.foto;
+            
+            const linkBtn = document.getElementById('modalExternalLink');
+            linkBtn.href = data.linkWebsite;
+            linkBtn.innerText = `Portofolio ${data.nama}`;
+
+            const listContainer = document.getElementById('modalDetails');
+            listContainer.innerHTML = "";
+            
+            data.details.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${item[0]}</strong>: ${item[1]}`;
+                listContainer.appendChild(li);
+            });
+
+            document.getElementById('profileModal').classList.add('active');
+        }
+
+        function closeProfile(event) {
+            if(event.target.id === 'profileModal') {
+                document.getElementById('profileModal').classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
